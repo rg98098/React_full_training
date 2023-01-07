@@ -14,7 +14,7 @@
  * port number
  * consistent hashing algorithm
  * Zero Config
- * 
+ * Tree Shaking - Remove un-wanted code
  * 
  * Transitive dependency
  * 

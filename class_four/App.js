@@ -657,7 +657,7 @@ const Header = () => {
 };
 
 const ResturantCard = ({ name, lastMileTravelString, cloudinaryImageId, cuisines }) => {
-  // console.log("hello", resturant);
+
   return (
     <div className="card">
       <img
@@ -666,7 +666,7 @@ const ResturantCard = ({ name, lastMileTravelString, cloudinaryImageId, cuisines
       />
       <h2>{name}</h2>
       <h3>{cuisines.join(", ")}</h3>
-      <h4>{lastMileTravelString}</h4>
+      <h4>{lastMileTravelString} minutes</h4>
     </div>
   );
 };
@@ -675,7 +675,7 @@ const Body = () => {
   return (
     <div className="resturant-list">
       {resturantList.map((resturant) => {
-        return <ResturantCard {...resturant.data} />;
+        return <ResturantCard {...resturant.data} key={resturant.data.id}/>;
       })}
     </div>
   );

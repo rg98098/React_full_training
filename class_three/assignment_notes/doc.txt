@@ -1,0 +1,31 @@
+Q1.   What is JSX?
+Ans:  JSX is html like syntax. It helps us to write react component in a very readible way.
+
+Q2.   Superpowers of JSX?
+Ans  1. JSX code is very readible as compare to React.createElement.
+     2. Easy to maintain
+     3. Easy to debug
+     4. Prevent XSS attacks by santizing the values.
+
+Q3    Role of type attribute in script tag? What options can I use there?
+Ans:  Type attribute specifies the type of the script. The type attribute identifies the content between 
+      the scripts and scipts tags. it has a default type text/javascript.
+      type attribute types:
+     1. text/javascript: It is the basic standard of writing javascript code inside the <script> tag.
+     2. text/ecmascript: this indicate scripts following ecamascript norms.
+     3. text/babel: this type tell that script is babel type and required babel to transpile it.
+     4. module:this type tells the browser that the script is a module which can import or
+         export other files or modules inside it.
+     5. text/typescipt: this type tell that script supports typescript.
+
+Q4:   {TitleComponent} vs {<TitleComponent/>} vs {<TitleComponent></TitleComponent>} in JSX.
+Ans   {TitleComponent} : this TitleComponent inside curly braces returning JSX which is representing React element.
+      {<TitleComponent/>} : this <TitleComponent/> inside curly braces returning JSX which is a functional component.
+      {<TitleComponent></TitleComponent>} : this represents a wrapped functional component and within TitleComponent,
+      we can have values, JSX or further functional component.
+      eg: {<TitleComponent>
+              <Card>
+              <h1>Title</h1>
+              <Description/>
+              </Card>
+          </TitleComponent>}

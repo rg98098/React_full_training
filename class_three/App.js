@@ -1,30 +1,25 @@
-/**
- * HMR - hot module reloading
- * File Watcher algorithm
- * Bundling
- * Minifying
- * Cleaning our code
- * Dev and production build
- * Super fast build algorithm
- * Image optimization
- * Caching while development
- * Compression
- * compartible with older version of browser
- * HTTPS on dev
- * port number
- * consistent hashing algorithm
- * Zero Config
- * Tree Shaking - Remove un-wanted code
- * 
- * Transitive dependency
- * 
- */
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-const h1 = React.createElement("h1",{className:"title", id:"name",style:{color:"red"}},"Hello Rahul");
-const h2 = React.createElement("h2",{className:"sub-title",id:"address"},"I am from Noida");
-const parent = React.createElement("div", {id:"parent"},[h1,h2])
+// React Element
+const title =(
+    <h1 id="title" key="h2">
+      Namaste React
+    </h1>
+  )
+
+// React component 
+// Composing component means functional components inside functional component
+const HeaderComponent = function (){
+  return (
+    <div>
+    {title}
+      <h2>Namaste React functional component</h2>
+      <h2>This is a h2 tag</h2>
+    </div>
+  )
+}
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(parent);
+root.render(<HeaderComponent/>);

@@ -1,0 +1,5 @@
+Q1:   Is JSX mandatory for React?
+Ans:  No, we can use React.createElement in place of JSX. We use JSX for code readibility and its reduces code complexity.
+
+Q2:   Is ES6 mandatory for React?
+Ans   No, it is not mandatory, but it is recommendable

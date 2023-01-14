@@ -1,7 +1,8 @@
 import { resturantList } from "../constants";
 import ResturantCard from "./ResturantCard";
 import { useEffect, useState } from "react";
-import { Loader } from "./Loader";
+import  Loader  from "./SkeletonLoader";
+import SkeletonCard from "./SkeletonCard";
 // What is state
 // what is React Hooks? - functions,
 // What is useState
@@ -32,11 +33,11 @@ const Body = () => {
   // not render component (early return)
   if(!allResturants) return null;
 
-  if(allResturants?.length === 0) return <Loader/>;
-  if(filteredResturants?.length === 0 ) return <h1>No restaurant match your filter!!</h1>
+  // if(true) return <Loader/>;
+  // if(filteredResturants?.length === 0 ) return <h1>No restaurant match your filter!!</h1>
 
 
-  return (allResturants?.length === 0) ? <Loader/>: (
+  return (allResturants?.length > 0) ?  (
     <>
       <div className="search-container">
         <input
@@ -56,12 +57,16 @@ const Body = () => {
         }}>Search</button>
       </div>
       <div className="resturant-list">
-        {filteredResturants.map((resturant) => {
-          return <ResturantCard {...resturant.data} key={resturant.data.id} />;
-        })}
+      {filteredResturants?.length > 0 ? (
+        filteredResturants.map((restaurant) => (
+              <ResturantCard key={restaurant?.data?.id} {...restaurant.data} />
+            ))
+          ) : (
+            <h2>No matching restaurant found</h2>
+          )}
       </div>
     </>
-  );
+  ): <Loader/>
 };
 
 export default Body;

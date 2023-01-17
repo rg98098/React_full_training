@@ -2,7 +2,7 @@ import SkeletonCard from "./SkeletonCard";
 
 const SkeletonLoader = () => {
   return (
-    <div class="shimmer-container">
+    <div className="shimmer-container">
       {Array.from({ length: 10 }, (e, i) => {
         return <SkeletonCard key={i} />;
       })}

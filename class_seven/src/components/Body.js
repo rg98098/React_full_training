@@ -1,8 +1,6 @@
-import { resturantList } from "../constants";
 import ResturantCard from "./ResturantCard";
 import { useEffect, useState } from "react";
 import  Loader  from "./SkeletonLoader";
-import SkeletonCard from "./SkeletonCard";
 // What is state
 // what is React Hooks? - functions,
 // What is useState

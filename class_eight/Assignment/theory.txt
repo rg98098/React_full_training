@@ -1,0 +1,102 @@
+Q1:   How do you create Nested Routes react-router-dom configuration?
+Ans   We can create Nested Route in react using createBrowserRouter method from react-router-dom.
+
+      eg:  import {createBrowserRouter} from 'react-router-dom';
+
+      const router = createBrowserRouter([
+        {
+          path:"/",
+          element:<XYZ/>,
+          children : [
+            {
+              path: "about",
+              element: <About />
+            }
+          ]
+        }
+      ])
+
+Q2:   createHashRouter, createMemoryRouter from React Router Dom?
+Ans:  createHashRouter is useful when you are not able to configure your web server to direct all
+      traffic to your react router application. Instead of using normal URLs, it will use the hash(#)
+      portion of the URL to manage the "application url".
+
+      createMemoryRouter is useful for testing and component developments tools like storybook
+
+Q3:   What is order of life cycle method calls in Class Based components?
+Ans:  First render on page(Mounting)
+      1. constructor
+      2. render
+      3. componentDidMount
+
+      Render after update (Updating)
+      1. render
+      2. componentDidUpdate
+
+      Unmounting
+      1. componentWillUnmount
+
+Q4:   Why do we use componentDidMount?
+Ans:  In class component, we handle side-effects with the help of componentDidMount method.
+      For eg: we need to call api in class component, so we use componentDidMount method to call api
+      after render method.
+
+Q5:   Why do we use componentWillUnmount? Show with example?
+Ans:  In class component, we have to remove some event listners with the help of componentWillUnmount 
+      method. componentWillUnmount is invoked immediately before a component is unmounted or destroyed.
+      For eg: we need to clear setInterval in class component, so we use componentWillUnmount method.
+
+      import React from "react";
+      export default class Clock extends React.Component {
+        constructor(props) {
+          console.log("Clock", "constructor");
+          super(props);   
+          this.state = {
+            date: new Date()
+          };
+        }
+        tick() {   
+          this.setState({
+            date: new Date()
+          });
+        }
+        // These methods are called "lifecycle hooks".
+        componentDidMount() {
+          console.log("Clock", "componentDidMount");
+          this.timerID = setInterval(() => {
+            this.tick();
+          }, 1000);
+        }
+        // These methods are called "lifecycle hooks".
+        componentWillUnmount() {
+          console.log("Clock", "componentWillUnmount");
+          clearInterval(this.timerID);
+        }
+        render() {
+          return (        
+              <div>It is {this.state.date.toLocaleTimeString()}.</div>
+          );
+        }
+      }
+
+Q5:   Why do we use super(props) in constructor?
+Ans   Super() function is  to call the contructor of the parent class. It is used when we need 
+      to access a few variables in the parent class.
+      Using Super(props), you can access 'this.props' inside the constructor method when you pass
+      'props' to super() method in the contructor.
+
+Q6:   Why can't we have the callback function of useEffect async?
+Ans:  
+      useEffect(async () => {
+        const users = await fetchUsers();
+        setUsers(users);
+
+        return () => {
+          // this never gets called, hello memory leaks...
+        };
+      }, []);
+
+      This will work,but should avoid. Because React's useEffect hook expects a cleanup function returned
+      from which is called when the component unmounts. Using an async function here will cause a bug
+      as the cleanup function will never get called.
+

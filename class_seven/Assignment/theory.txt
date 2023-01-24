@@ -43,11 +43,14 @@ Ans:  SPA stands for Single page application. SPA is a implementation of web app
       web page.
 
 Q5:   What is the differnce between Client side routing and Server side routing?
-Ans:  In Server side routing , when a user click on a link then browser makes an http request for that page
-	    on server now server process the request and send a response usually a html page, now bowser discard the 
-      old page and loads the new page.
+Ans:  In Server side routing , when browsing, the adjustment of a URL can make a lot of things 
+      happen. This will happen regularly by clicking on a link, which in turn will request a 
+      new page from the server. This is what we call a server-side route. A whole new document 
+      is served to the user. A server-side request causes the whole page to refresh. This is 
+      because a new GET request is sent to the server which responds with a new document, 
+      completely discarding the old page altogether.
 
-      In client side routing , when use click on a link , now client side code catches the event look for the
+      In client side routing , when user click on a link , now client side code catches the event look for the
       the like if the url is not an external then it prevents the browser to make  request.
       then routing library changes the url in brwoser with help of html histroy api and routing libary changes
       the states and loads component on client side. sometimes if it require client app request data from server

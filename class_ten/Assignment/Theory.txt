@@ -1,0 +1,16 @@
+Q1:   Explore all the ways of writing css
+Ans:  1. Basic file css
+      2. SCSS/SASS
+      3. Inline css
+      4. Library component like chakra UI, material UI, Ant UI, webbasic
+      5. tailwind
+
+Q2:   How do we configure tailwind?
+Ans:  
+
+Q3:   In tailwind.config.js, what does all the keys mean (content,theme,extend,plugins)?
+Ans:  
+
+Q4:   Why do we have .postcssrc file?
+Ans:  Parcel or bundler takes this configuration from this file while bundlings up and compile twailwind
+      css into nromal css.

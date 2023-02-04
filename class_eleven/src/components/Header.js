@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserConext";
 
 const Title = () => (
   <a href="/">
@@ -13,6 +15,8 @@ const Title = () => (
 );
 
 const Header = () => {
+
+  const {user} = useContext(UserContext)
   return (
     <div className="flex justify-between pl-2 bg-pink-50 shadow-lg">
       <Title />
@@ -25,6 +29,7 @@ const Header = () => {
           <li className="px2">Cart</li>
         </ul>
       </div>
+      <div className="m-2">{user.name}</div>
     </div>
   );
 };

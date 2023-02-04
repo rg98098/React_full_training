@@ -1,9 +1,10 @@
 import ResturantCard from "./ResturantCard";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Loader from "./SkeletonLoader";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/UserConext";
 // What is state
 // what is React Hooks? - functions,
 // What is useState
@@ -14,6 +15,8 @@ const Body = () => {
   // searchText is a local state variable
   const [searchInput, setSearchInput] = useState(""); // To create state variable,
   //returns = [variable name, function to update the variable]
+
+  const {user, setUser} =useContext(UserContext)
 
   // empty dependency
   useEffect(() => {
@@ -64,6 +67,26 @@ const Body = () => {
         >
           Search
         </button>
+        <input
+          type="text"
+          value={user.name}
+          className="focus:bg-pink-200"
+          placeholder="Search test"
+          onChange={e=> setUser({
+            ...user,
+            name: e.target.value
+            
+          })}/>
+          <input
+          type="text"
+          value={user.email}
+          className="focus:bg-pink-200"
+          placeholder="Search test"
+          onChange={e=> setUser({
+            ...user,
+            email: e.target.value
+          })}
+        />
       </div>
       <div className="flex flex-wrap">
         {filteredResturants?.length > 0 ? (

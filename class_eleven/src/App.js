@@ -1,57 +1,66 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, Outlet, RouterProvider} from 'react-router-dom'
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
-import About from "./components/About";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import ResturantMenu from "./components/ResturantMenu";
 import SkeletonLoader from "./components/SkeletonLoader";
+import UserContext from "./utils/UserConext";
 
-const Instamart = lazy(()=>import('./components/Instamart'))
-
+const Instamart = lazy(() => import("./components/Instamart"));
+const About = lazy(() => import("./components/About"));
 
 const AppLayout = () => {
+  const [users, setUsers] = useState({
+    name: "Rahul Gupta",
+    email: "test@1234",
+  });
+
   return (
-    <>
+    <UserContext.Provider value={{ user: users,setUser: setUsers }}>
       <Header />
       <Outlet />
       <Footer />
-    </>
+    </UserContext.Provider>
   );
 };
 const appRouter = createBrowserRouter([
   {
-    path:"/",
-    element: <AppLayout/>,
-    errorElement:<Error/>,
-    children : [
+    path: "/",
+    element: <AppLayout />,
+    errorElement: <Error />,
+    children: [
       {
-        path:"/",
-        element: <Body/>
+        path: "/",
+        element: <Body />,
       },
       {
-        path:"/about",
-        element: <About/>,
+        path: "/about",
+        element: <Suspense fallback={<SkeletonLoader/>}><About /></Suspense>,
       },
       {
-        path:"/contact",
-        element: <Contact/>
+        path: "/contact",
+        element: <Contact />,
       },
       {
-        path:"/resturant/:id",
-        element: <ResturantMenu/>
+        path: "/resturant/:id",
+        element: <ResturantMenu />,
       },
       {
-        path:"/instamart",
-        element:<Suspense fallback={<SkeletonLoader/>}><Instamart/></Suspense>
-      }
-    ]
-  }
-])
+        path: "/instamart",
+        element: (
+          <Suspense fallback={<SkeletonLoader />}>
+            <Instamart />
+          </Suspense>
+        ),
+      },
+    ],
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<RouterProvider router={appRouter}/>);
+root.render(<RouterProvider router={appRouter} />);

@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav--btn {
+  @apply w-20 h-8 rounded-md basis-16 bg-white  text-blue-dark outline-none hover:bg-hpink hover:text-white;
+}

@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import ResturantMenu from "./components/ResturantMenu";
-import SkeletonLoader from "./components/SkeletonLoader";
+import SkeletonLoader from "./components/Shimmer";
 import UserContext from "./utils/UserConext";
 import {Provider} from "react-redux";
 import store from "./utils/store";

@@ -3,11 +3,17 @@ import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import { IMG_CON_URL } from "../constants";
 import useResturant from "../utils/useResturant";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 const ResturantMenu = () => {
   const { id } = useParams();
   const restaurant = useResturant(id);
-  console.log(restaurant)
+  const dispatch = useDispatch()
+
+  const handleAddItem = (item) => {
+    dispatch(addItem(item))
+  }
 
   return !restaurant ? (
     <Shimmer />
@@ -47,7 +53,7 @@ const ResturantMenu = () => {
               </div>
               <div className="flex flex-col justify-center items-center w-[118px] h-[150px]">
                 { item?.cloudinaryImageId  && <img className="w-[118px] h-[96px]" src={ IMG_CON_URL  + item?.cloudinaryImageId } alt={item?.name}/> }
-                <button className="btn btn--primary w-[118px] h-[34px] mt-2.5"> ADD +</button>
+                <button className="btn btn--primary w-[118px] h-[34px] mt-2.5" onClick={()=> handleAddItem(item)}> ADD +</button>
               </div>
             </div>
             )}

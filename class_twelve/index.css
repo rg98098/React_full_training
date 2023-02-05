@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.container {
+  @apply min-h-[77vh] min-w-full;
+}
+
+.btn {
+  @apply h-[30px] rounded-md bg-pink text-blue-dark outline-none hover:bg-hpink hover:text-white;
+}
+
 .nav--btn {
   @apply w-20 h-8 rounded-md basis-16 bg-white  text-blue-dark outline-none hover:bg-hpink hover:text-white;
 }

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { IMG_CON_URL } from "../constants";
 import UserContext from "../utils/UserConext";
 
-const ResturantCard = ({ name, lastMileTravelString, cloudinaryImageId, cuisines, avgRating, slaString, costForTwoString }) => {
+const ResturantCard = ({ name, cloudinaryImageId, cuisines, avgRating, slaString, costForTwoString }) => {
   const {user} = useContext(UserContext);
   const buttonStyle = {
     backgroundColor: avgRating == "--" ? "#fff" : parseFloat(avgRating) < 4.0 ? "#db7c38":"#48c479",
